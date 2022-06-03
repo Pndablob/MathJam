@@ -1,6 +1,7 @@
+from sympy import *
 from random import *
-import matplotlib as mp
 from tkinter import *
+import matplotlib as mp
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 
 
@@ -12,7 +13,7 @@ def displayLatex(master, equation):
     label = Label(master)
     label.pack()
 
-    fig = mp.figure.Figure(figsize=(10, 8), dpi=100)
+    fig = mp.figure.Figure(figsize=(10, 4), dpi=100)
     fig.clear()
     ax = fig.add_subplot(111)
 
@@ -30,24 +31,50 @@ def displayLatex(master, equation):
 
 
 # generate a random polynomial
-def genFunc(deg):
-    f = ""
+def genPoly(deg):
+    if randint(0, 1) == 0:
+        p = ""
+    else:
+        p = "-"
     for i in range(deg, 0, -1):
         coef = randint(1, 10)  # editable values
         if coef > 1:
-            f += f"{coef}*"
-        f += "x"
+            p += f"{coef}*"
+
+        p += "x"
+
         if i > 1:
-            f += f"^{i}"
+            p += f"^{i}"
+
         sign = randint(0, 1)  # editable values
         if sign == 1:
-            f += " + "
+            p += " + "
         elif sign == 0:
-            f += " - "
-    c = randint(1, 50)  # editable values
-    f += str(c)
+            p += " - "
 
-    return f
+    c = randint(1, 50)  # editable values
+    p += str(c)
+
+    return p
+
+
+def genIntEquation(func, a=None, b=None):
+    return "\\int{a}{b} " + func + "\\, dx"
+
+
+def getRandDegPoly():
+    d = randint(1, 8)  # editable value
+    return genPoly(d)
+
+
+def getIntegral(func):
+    x = Symbol('x')
+    return mathToLatex(str(integrate(func, x)))
+
+
+def getDerivative(func):
+    x = Symbol('x')
+    return mathToLatex(str(diff(func, x)))
 
 
 def latexToMath(latex):
@@ -55,7 +82,7 @@ def latexToMath(latex):
 
 
 def mathToLatex(math):
-    return math.replace("**", "^").replace("*", "")
+    return math.replace("**", "^").replace("*x", "x")
 
 
 def main():
@@ -64,4 +91,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
