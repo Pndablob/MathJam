@@ -1,0 +1,161 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface version="1.1">
+  <object class="ttk.Frame" id="parent">
+    <property name="height">600</property>
+    <property name="width">1200</property>
+    <layout manager="grid">
+      <property name="column">2</property>
+      <property name="row">2</property>
+    </layout>
+    <child>
+      <object class="ttk.Labelframe" id="topicFrame">
+        <property name="height">400</property>
+        <property name="text" translatable="yes">Topic Selection</property>
+        <property name="width">400</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="row">0</property>
+        </layout>
+        <child>
+          <object class="ttk.Radiobutton" id="derivativeRB">
+            <property name="text" translatable="yes">Derivatives</property>
+            <layout manager="pack">
+              <property name="fill">both</property>
+              <property name="propagate">True</property>
+              <property name="side">top</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Radiobutton" id="indefIntRB">
+            <property name="text" translatable="yes">Indefinite Integrals</property>
+            <layout manager="pack">
+              <property name="fill">both</property>
+              <property name="propagate">True</property>
+              <property name="side">top</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Radiobutton" id="defIntRB">
+            <property name="text" translatable="yes">Definite Integrals</property>
+            <layout manager="pack">
+              <property name="fill">both</property>
+              <property name="propagate">True</property>
+              <property name="side">top</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Labelframe" id="typeFrame">
+        <property name="height">400</property>
+        <property name="text" translatable="yes">Subtopic Selection</property>
+        <property name="width">400</property>
+        <layout manager="grid">
+          <property name="column">1</property>
+          <property name="row">0</property>
+        </layout>
+        <child>
+          <object class="ttk.Checkbutton" id="sub1">
+            <property name="text" translatable="yes">checkbutton1</property>
+            <layout manager="pack">
+              <property name="side">top</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="sub2">
+            <property name="text" translatable="yes">checkbutton2</property>
+            <layout manager="pack">
+              <property name="side">top</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="sub3">
+            <property name="text" translatable="yes">checkbutton3</property>
+            <layout manager="pack">
+              <property name="side">top</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="sub4">
+            <property name="text" translatable="yes">checkbutton4</property>
+            <layout manager="pack">
+              <property name="side">top</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="sub5">
+            <property name="text" translatable="yes">checkbutton5</property>
+            <layout manager="pack">
+              <property name="side">top</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="sub6">
+            <property name="text" translatable="yes">checkbutton6</property>
+            <layout manager="pack">
+              <property name="side">top</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Checkbutton" id="sub7">
+            <property name="text" translatable="yes">checkbutton7</property>
+            <layout manager="pack">
+              <property name="side">top</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Labelframe" id="settingsFrame">
+        <property name="height">400</property>
+        <property name="text" translatable="yes">Other Settings</property>
+        <property name="width">400</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="row">1</property>
+        </layout>
+        <child>
+          <object class="ttk.Entry" id="numQEntry">
+            <property name="width">20</property>
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="propagate">True</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Label" id="numQLabel">
+            <property name="font">{Ariel} 12 {bold}</property>
+            <property name="text" translatable="yes">Number of Questions: </property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="propagate">True</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Button" id="startButton">
+        <property name="text" translatable="yes">Let's Jam!</property>
+        <layout manager="grid">
+          <property name="column">1</property>
+          <property name="propagate">True</property>
+          <property name="row">1</property>
+        </layout>
+      </object>
+    </child>
+  </object>
+</interface>

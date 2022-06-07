@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='utf-8'?>
+<interface version="1.2">
+  <object class="ttk.Frame" id="frame1">
+    <property name="height">200</property>
+    <property name="width">200</property>
+    <layout manager="pack">
+      <property name="side">top</property>
+    </layout>
+    <child>
+      <object class="ttk.Frame" id="ansFrame">
+        <property name="height">200</property>
+        <property name="width">200</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="pady">10</property>
+          <property name="row">5</property>
+        </layout>
+        <child>
+          <object class="ttk.Label" id="ansLabel">
+            <property name="font">{Ariel} 12 {bold}</property>
+            <property name="text" translatable="yes">Enter Answer: </property>
+            <layout manager="grid">
+              <property name="column">0</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Entry" id="ansEntry">
+            <property name="font">{Ariel} 14 {}</property>
+            <property name="width">50</property>
+            <layout manager="grid">
+              <property name="column">1</property>
+              <property name="ipady">5</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+        <child>
+          <object class="ttk.Button" id="ansButton">
+            <property name="text" translatable="yes">Answer</property>
+            <layout manager="grid">
+              <property name="column">2</property>
+              <property name="padx">5</property>
+              <property name="row">0</property>
+            </layout>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="questionHeader">
+        <property name="font">{Ariel} 16 {bold}</property>
+        <property name="text" translatable="yes">Question:</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="row">0</property>
+        </layout>
+      </object>
+    </child>
+    <child>
+      <object class="ttk.Label" id="ansHeader">
+        <property name="font">{Ariel} 16 {bold}</property>
+        <property name="text" translatable="yes">Answer:</property>
+        <layout manager="grid">
+          <property name="column">0</property>
+          <property name="row">3</property>
+        </layout>
+      </object>
+    </child>
+  </object>
+</interface>
