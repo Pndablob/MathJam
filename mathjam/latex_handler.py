@@ -38,6 +38,28 @@ class Root:
 
         canvas.draw()
 
+        """
+        def displayLatex(master, equation):
+        mp.use('TkAgg')
+        equation = "$" + equation + "$"
+
+        label = Label(master)
+        label.pack()
+    
+        fig = mp.figure.Figure(figsize=(10, 4), dpi=100)
+        ax = fig.add_subplot(111)
+    
+        ax.text(0.05, 0.2, equation, fontsize=16)
+    
+        canvas = FigureCanvasTkAgg(fig, master=label)
+        canvas.get_tk_widget().pack(side="top", fill="both", expand=True)
+    
+        ax.get_xaxis().set_visible(False)
+        ax.get_yaxis().set_visible(False)
+
+        canvas.draw()
+        """
+
 
 if __name__ == '__main__':
     master = Tk()

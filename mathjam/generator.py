@@ -1,43 +1,54 @@
-from mathjam.utils import *
+from random import *
 from sympy import *
 
 
-def main():
-    master = Tk()
+# generate a random polynomial of given degree
+def genPoly(deg):
+    if randint(0, 1) == 0:
+        p = ""
+    else:
+        p = "-"
+    for i in range(deg, 0, -1):
+        coef = randint(1, 10)  # editable values
+        if coef > 1:
+            p += f"{coef}*"
 
-    poly = getRandDegPoly()
-    func = mathToLatex(poly)
-    print(f"Function: {func}")
-    displayLatex(master, func)
+        p += "x"
 
-    x = Symbol("x")
-    ans = getIntegral(poly)
-    print(f"Integral Answer: {ans} + C")
-    displayLatex(master, f"{ans} + C")
+        if i > 1:
+            p += f"^{i}"
 
-    ans = getDerivative(poly)
-    print(f"Derivative Answer: {ans}")
-    displayLatex(master, ans)
+        sign = randint(0, 1)  # editable values
+        if sign == 1:
+            p += " + "
+        elif sign == 0:
+            p += " - "
 
-    master.mainloop()
+    c = randint(1, 50)  # editable values
+    p += str(c)
 
-
-def main2():
-    master = Tk()
-
-    s = ""
-    for i in range(10):
-        poly = mathToLatex(getRandDegPoly())
-        print(poly)
-        s += poly + "\n"
-
-    s += " "
-
-    print(s)
-
-    displayLatex(master, s)
-    master.mainloop()
+    return p
 
 
-if __name__ == '__main__':
-    main2()
+#  generate random degree polynomial
+def genRandDegPoly():
+    d = randint(1, 8)  # editable value
+    return genPoly(d)
+
+
+def getIntegral(func):
+    x = Symbol('x')
+    return mathToLatex(str(integrate(func, x)))
+
+
+def getDerivative(func):
+    x = Symbol('x')
+    return mathToLatex(str(diff(func, x)))
+
+
+def latexToMath(latex):
+    return latex.replace("x", "*x").replace("^", "**")
+
+
+def mathToLatex(math):
+    return math.replace("**", "^").replace("*x", "x")
