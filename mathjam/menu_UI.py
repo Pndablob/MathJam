@@ -117,7 +117,6 @@ class MenuFrame:
         self.displayCheckBox(self.subtopics)
 
 
-
 if __name__ == '__main__':
     root = tk.Tk()
     menu = MenuFrame(root)
