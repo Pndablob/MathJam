@@ -3,9 +3,10 @@
   <object class="ttk.Frame" id="parent">
     <property name="height">600</property>
     <property name="width">1200</property>
-    <layout manager="grid">
-      <property name="column">2</property>
-      <property name="row">2</property>
+    <layout manager="pack">
+      <property name="fill">both</property>
+      <property name="propagate">True</property>
+      <property name="side">top</property>
     </layout>
     <child>
       <object class="ttk.Labelframe" id="topicFrame">
@@ -14,6 +15,7 @@
         <property name="width">400</property>
         <layout manager="grid">
           <property name="column">0</property>
+          <property name="propagate">True</property>
           <property name="row">0</property>
         </layout>
         <child>
