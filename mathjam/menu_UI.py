@@ -7,12 +7,7 @@ from application_UI import AppFrame
 
 class MenuFrame:
     def __init__(self, master):
-        self.master = master
-        self.master.title("Math Jam Main Menu")
-        self.parent = tk.Frame(self.master)
-        self.parent.grid(column='2', row='2', pady='25')
-        self.parent.pack(side="top", fill="both", expand=True)
-
+        # vars
         self.topic = tk.IntVar()
         self.topic.set(-1)
         self.subtopics = []
@@ -20,7 +15,20 @@ class MenuFrame:
         self.checkButtons = []
 
         # build ui
-        self.topicFrame = ttk.Labelframe(self.parent, height='200', width='200', text='Topic Selection')
+        self.master = master
+        self.master.title("Math Jam Main Menu")
+        self.master.geometry("500x300")
+        self.master.minsize(500, 300)
+        self.title = ttk.Label(self.master, font="{Ariel} 24 {bold}", text="Main Menu")
+        self.title.pack()
+        self.parent = tk.Frame(self.master)
+        self.parent.pack(side="top", fill="both", expand=True, pady=(0, 20), padx="20")
+
+        # resize widgets dynamically to frame size
+        self.parent.rowconfigure(0, weight=1)
+        self.parent.columnconfigure(0, weight=1)
+
+        self.topicFrame = ttk.Labelframe(self.parent, text='Topic Selection')
         self.topicFrame.grid(column='0', row='0')
         self.derivativeRB = ttk.Radiobutton(self.topicFrame, text="Derivatives", value=0, command=self.derivative, variable=self.topic)
         self.derivativeRB.pack(side='top', fill='both')
@@ -28,22 +36,19 @@ class MenuFrame:
         self.indefIntRB.pack(side='top', fill='both')
         self.defIntRB = ttk.Radiobutton(self.topicFrame, text='Definite Integrals', value=2, command=self.defIntegral, variable=self.topic)
         self.defIntRB.pack(side='top', fill='both')
-        self.typeFrame = ttk.Labelframe(self.parent, height='200', width='200', text='Subtopic Selection')
+        self.typeFrame = ttk.Labelframe(self.parent, text='Subtopic Selection')
         self.typeFrame.grid(column='1', row='0')
-        self.settingsFrame = ttk.Labelframe(self.parent, height='200', width='200', text='Other Settings')
+        self.settingsFrame = ttk.Labelframe(self.parent, text='Other Settings')
         self.settingsFrame.grid(column='0', row='1')
-        self.numQEntry = ttk.Entry(self.settingsFrame, width='20')
-        self.numQEntry.grid(column='1', row='0')
+        self.numQEntry = ttk.Entry(self.settingsFrame, width='15')
+        self.numQEntry.grid(column='1', row='0', padx='5')
         self.numQLabel = ttk.Label(self.settingsFrame, font="{Ariel} 12 {bold}", text='Number of Questions: ')
         self.numQLabel.grid(column='0', row='0')
         self.startButton = ttk.Button(self.parent, text="Let's Jam!", command=self.start)
-        self.startButton.grid(column='1', row='1', ipadx='15')
-
-    def run(self):
-        self.parent.mainloop()
+        self.startButton.grid(column='1', row='1', ipadx='15', ipady='5', pady=(5, 0))
 
     def start(self):
-        numQ = self.numQEntry.get()
+        numQ = int(self.numQEntry.get())
 
         # get selected subtopics
         subtopics = []
@@ -57,15 +62,14 @@ class MenuFrame:
             if len(subtopics) == 0 or self.topic == -1:
                 messagebox.showwarning("No Topic Selected", "Please select at least one topic and subtopic")
                 return
-            elif int(numQ) is None or int(numQ) <= 0:
+            elif numQ is None or numQ <= 1:
                 raise ValueError
         except ValueError:
-            messagebox.showwarning("Invalid Number Input", "Please input a valid positive integer number of problems")
+            messagebox.showwarning("Invalid Number Input", "Please input a valid positive integer number of problems that is at least two")
             return
 
-        print(subtopics)
+        # close main menu, run application
         self.master.destroy()
-
         app = AppFrame(numQ=numQ, topic=self.topic.get(), subtopics=subtopics)
         app.run()
 
@@ -87,12 +91,10 @@ class MenuFrame:
     def derivative(self):
         self.subtopics = [
             "Polynomials",
-            "Product and Quotient Rule",
-            "Trig and Inverse Trig",
-            "Log and Exponential",
             "Chain Rule",
-            "Implicit",
-            "Inverse"
+            "Product and Quotient",
+            "Trigonometric",
+            "Log and Exponential",
         ]
 
         self.displayCheckBox(self.subtopics)
@@ -101,8 +103,6 @@ class MenuFrame:
     def indefIntegral(self):
         self.subtopics = [
             "Polynomials",
-            "U-substitution",
-            "Integration by Parts",
             "Partial Fractions"
         ]
 
@@ -111,10 +111,13 @@ class MenuFrame:
     # 2
     def defIntegral(self):
         self.subtopics = [
-            "Improper Integrals"
+            "Polynomials"
         ]
 
         self.displayCheckBox(self.subtopics)
+
+    def run(self):
+        self.parent.mainloop()
 
 
 if __name__ == '__main__':

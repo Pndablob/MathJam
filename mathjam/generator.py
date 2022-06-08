@@ -1,6 +1,8 @@
 from random import *
 from sympy import *
 
+from utils import *
+
 
 # generate a random polynomial of given degree
 def genPoly(deg):
@@ -31,7 +33,35 @@ def genPoly(deg):
 
 
 #  generate random degree polynomial
-def genRandDegPoly():
-    d = randint(1, 8)  # editable value
+def genRandDegPoly(a, b):
+    d = randint(a, b)  # editable value
     return genPoly(d)
+
+
+def genSimpleChain():
+    p = ""
+    p += str(randint(1, 50))
+
+    if randint(0, 1) == 0:
+        p += "*sin("
+    else:
+        p += "*cos("
+
+    if randint(0, 1) == 0:
+        p += genRandDegPoly(1, 3) + ")"
+    else:
+        p += f"{randint(1, 20)} + x)"
+
+    return p
+
+
+def main():
+    x = Symbol('x')
+    func = genSimpleChain()
+    print(func)
+    print(getDerivative(func))
+
+
+if __name__ == '__main__':
+    main()
 
