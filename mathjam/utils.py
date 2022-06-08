@@ -21,6 +21,21 @@ def updateCanvas(col, row, master, equation=None):
     qCanvas.draw()
 
 
+def checkAnswer(equation, answer):
+    equation = equation.replace(" +", "+").replace("+ ", "+").replace(" -", "-").replace("- ", "-").replace(" /", "/").replace("/ ", "/")
+    equation = equation.replace("+", " + ").replace("-", " - ")
+
+    equation = equation.replace("+ ", "+").replace("- ", "-")
+    resp = equation.split()
+    answer = answer.replace("+ ", "+").replace("- ", "-")
+    ans = answer.split()
+
+    for a in ans:
+        if a not in resp:
+            return False
+    return True
+
+
 def getDerivative(func):
     x = Symbol('x')
     return mathToLatex(str(diff(func, x)))
