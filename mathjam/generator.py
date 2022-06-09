@@ -1,7 +1,4 @@
 from random import *
-from sympy import *
-
-from utils import *
 
 
 # generate a random polynomial of given degree
@@ -53,15 +50,3 @@ def genSimpleChain():
         p += f"{randint(1, 20)} + x)"
 
     return p
-
-
-def main():
-    x = Symbol('x')
-    func = genSimpleChain()
-    print(func)
-    print(getDerivative(func))
-
-
-if __name__ == '__main__':
-    main()
-

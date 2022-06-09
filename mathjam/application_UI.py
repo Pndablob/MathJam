@@ -4,8 +4,8 @@ from tkinter import messagebox
 import tkinter.ttk as ttk
 from random import *
 
-from generator import *
-from utils import *
+from mathjam.generator import *
+from mathjam.utils import *
 
 
 class AppFrame:
