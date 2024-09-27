@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 import tkinter.ttk as ttk
 
-from application_UI import AppFrame
+from mathjam.application_UI import AppFrame
 
 
 class MenuFrame:
@@ -48,8 +48,6 @@ class MenuFrame:
         self.startButton.grid(column='1', row='1', ipadx='15', ipady='5', pady=(5, 0))
 
     def start(self):
-        numQ = int(self.numQEntry.get())
-
         # get selected subtopics
         subtopics = []
         for i in range(len(self.checked)):
@@ -59,6 +57,7 @@ class MenuFrame:
 
         # exception handling
         try:
+            numQ = int(self.numQEntry.get())
             if len(subtopics) == 0 or self.topic == -1:
                 messagebox.showwarning("No Topic Selected", "Please select at least one topic and subtopic")
                 return
@@ -92,9 +91,6 @@ class MenuFrame:
         self.subtopics = [
             "Polynomials",
             "Chain Rule",
-            "Product and Quotient",
-            "Trigonometric",
-            "Log and Exponential",
         ]
 
         self.displayCheckBox(self.subtopics)
@@ -103,7 +99,6 @@ class MenuFrame:
     def indefIntegral(self):
         self.subtopics = [
             "Polynomials",
-            "Partial Fractions"
         ]
 
         self.displayCheckBox(self.subtopics)
@@ -120,7 +115,7 @@ class MenuFrame:
         self.parent.mainloop()
 
 
-if __name__ == '__main__':
+"""if __name__ == '__main__':
     root = tk.Tk()
     menu = MenuFrame(root)
-    menu.run()
+    menu.run()"""

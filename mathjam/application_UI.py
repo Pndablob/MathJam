@@ -4,8 +4,8 @@ from tkinter import messagebox
 import tkinter.ttk as ttk
 from random import *
 
-from generator import *
-from utils import *
+from mathjam.generator import *
+from mathjam.utils import *
 
 
 class AppFrame:
@@ -120,31 +120,17 @@ class AppFrame:
             ans = getDerivative(self.func)
         elif self.topic == 1:
             ans = getIndefIntegral(self.func)
+        elif self.topic == 2:
+            ans = getDefIntegral(self.func, self.a, self.b)
 
         giveup = False
-        if not self.checkAnswer(equation=eq, answer=ans):
+        if not checkAnswer(equation=eq, answer=ans):
             retry = messagebox.askyesno("Incorrect Answer", "Would you like to try again?", icon='warning')
             if retry:
                 return
             giveup = True
 
         self.showAnswer(answer=ans, giveup=giveup)
-
-    def checkAnswer(self, equation, answer):
-        equation = equation.replace(" +", "+").replace("+ ", "+").replace(" -", "-").replace("- ", "-").replace(" /",
-                                                                                                                "/").replace(
-            "/ ", "/")
-        equation = equation.replace("+", " + ").replace("-", " - ")
-
-        equation = equation.replace("+ ", "+").replace("- ", "-")
-        resp = equation.split()
-        answer = answer.replace("+ ", "+").replace("- ", "-")
-        ans = answer.split()
-
-        for a in ans:
-            if a not in resp:
-                return False
-        return True
 
     def showAnswer(self, answer, giveup):
         def close():
